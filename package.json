@@ -1,7 +1,7 @@
 {
   "name": "create-release-action",
   "version": "2.0.0",
-  "description": "Create a release",
+  "description": "Create a Release in a GitHub Action",
   "main": "dist/index.js",
   "scripts": {
     "build": "ncc build src/main.js",
