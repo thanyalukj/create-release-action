@@ -1,7 +1,7 @@
 # GitHub Action - Releases API
 
-> _This repository is based on GitHub's unmaintained `actions/create-release` action. We have updated_
-> _it to use GitHub's current APIs and will be continuing to do so for the foreseeable future._
+> _This repository is a fork of the GitHub's unmaintained `create-release-action` https://github.com/comnoco/ create-release-action.
+> I have added *generate_release_notes* field to the inputs.
 
 This GitHub Action (written in JavaScript) wraps the [GitHub Release API](https://developer.github.com/v3/repos/releases/), specifically the [Create a Release](https://developer.github.com/v3/repos/releases/#create-a-release) endpoint, to allow you to leverage GitHub Actions to create releases.
 
