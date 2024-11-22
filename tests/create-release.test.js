@@ -32,8 +32,10 @@ describe('Create Release', () => {
     context.sha = 'sha';
 
     const github = {
-      repos: {
-        createRelease,
+      rest: {
+        repos: {
+          createRelease,
+        },
       },
     };
 
@@ -60,6 +62,7 @@ describe('Create Release', () => {
       draft: false,
       prerelease: false,
       target_commitish: 'sha',
+      generate_release_notes: false,
     });
   });
 
@@ -83,6 +86,7 @@ describe('Create Release', () => {
       draft: true,
       prerelease: false,
       target_commitish: 'sha',
+      generate_release_notes: false,
     });
   });
 
@@ -106,6 +110,7 @@ describe('Create Release', () => {
       draft: false,
       prerelease: true,
       target_commitish: 'sha',
+      generate_release_notes: false,
     });
   });
 
@@ -129,6 +134,7 @@ describe('Create Release', () => {
       draft: false,
       prerelease: false,
       target_commitish: 'sha',
+      generate_release_notes: false,
     });
   });
 
@@ -160,6 +166,34 @@ describe('Create Release', () => {
       draft: false,
       prerelease: false,
       target_commitish: 'sha',
+      generate_release_notes: false,
+    });
+  });
+
+  test('Release with generate_release_notes created', async () => {
+    core.getInput = jest
+      .fn()
+      .mockReturnValueOnce('refs/tags/v1.0.0')
+      .mockReturnValueOnce('myRelease')
+      .mockReturnValueOnce('') // <-- The default value for body in action.yml
+      .mockReturnValueOnce('false')
+      .mockReturnValueOnce('false')
+      .mockReturnValueOnce(null)
+      .mockReturnValueOnce(null)
+      .mockReturnValueOnce('true');
+
+    await run();
+
+    expect(createRelease).toHaveBeenCalledWith({
+      owner: 'owner',
+      repo: 'repo',
+      tag_name: 'v1.0.0',
+      name: 'myRelease',
+      body: '',
+      draft: false,
+      prerelease: false,
+      target_commitish: 'sha',
+      generate_release_notes: true,
     });
   });
 
