@@ -26,6 +26,12 @@ async function run() {
       core.getInput('commitish', { required: false }) || context.sha;
 
     const bodyPath = core.getInput('body_path', { required: false });
+    const generate_release_notes =
+      'true' ===
+      core.getInput('generate_release_notes', {
+        required: false,
+      });
+
     const owner = core.getInput('owner', { required: false }) || currentOwner;
     const repo = core.getInput('repo', { required: false }) || currentRepo;
     let bodyFileContent = null;
@@ -36,7 +42,6 @@ async function run() {
         core.setFailed(error.message);
       }
     }
-    const generate_release_notes = core.getInput('generate_release_notes', { required: false });
 
     // Create a release
     // API Documentation: https://developer.github.com/v3/repos/releases/#create-a-release
@@ -50,7 +55,7 @@ async function run() {
       draft,
       prerelease,
       target_commitish: commitish,
-      generate_release_notes: generate_release_notes
+      generate_release_notes: generate_release_notes,
     });
 
     // Get the ID, html_url, and upload URL for the created Release from the response
