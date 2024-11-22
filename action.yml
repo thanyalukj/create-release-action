@@ -1,6 +1,6 @@
 name: 'Create a Release in a GitHub Action'
 description: 'Create a release for a tag in your repository'
-author: 'Thanyaluk Jirapech-umpai'
+author: 'Comnoco Ltd'
 inputs:
   tag_name:
     description:
