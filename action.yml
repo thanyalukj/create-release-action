@@ -1,4 +1,4 @@
-name: 'Create a Release in a GitHub Action'
+name: 'Create a Release for a Tag Action'
 description: 'Create a release for a tag in your repository'
 author: 'Thanyaluk Jirapech-umpai'
 inputs:
