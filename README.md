@@ -1,7 +1,7 @@
 # GitHub Action - Releases API
 
-> _This repository is based on GitHub's unmaintained `actions/create-release` action. We have updated_
-> _it to use GitHub's current APIs and will be continuing to do so for the foreseeable future._
+> _This repository is a fork of the GitHub's unmaintained `create-release-action` https://github.com/comnoco/ create-release-action.
+> I have added *generate_release_notes* field to the inputs.
 
 This GitHub Action (written in JavaScript) wraps the [GitHub Release API](https://developer.github.com/v3/repos/releases/), specifically the [Create a Release](https://developer.github.com/v3/repos/releases/#create-a-release) endpoint, to allow you to leverage GitHub Actions to create releases.
 
@@ -23,6 +23,7 @@ For more information on these inputs, see the [API Documentation](https://develo
 - `commitish` : Any branch or commit SHA the Git tag is created from, unused if the Git tag already exists. Default: SHA of current commit
 - `owner`: The name of the owner of the repo. Used to identify the owner of the repository.  Used when cutting releases for external repositories.  Default: Current owner
 - `repo`: The name of the repository. Used to identify the repository on which to release.  Used when cutting releases for external repositories. Default: Current repository
+- `generate_release_notes`: Whether to automatically generate the name and body for this release. If name is specified, the specified name will be used; otherwise, a name will be automatically generated. If body is specified, the body will be pre-pended to the automatically generated notes.
 
 #### `body_path`
 The `body_path` is valuable for dynamically creating a `.md` within code commits and even within the Github Action steps leading up to the `create-release`.

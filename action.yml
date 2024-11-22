@@ -1,6 +1,6 @@
 name: 'Create a Release in a GitHub Action'
 description: 'Create a release for a tag in your repository'
-author: 'Comnoco Ltd'
+author: 'Thanyaluk Jirapech-umpai'
 inputs:
   tag_name:
     description:
@@ -41,6 +41,11 @@ inputs:
       'Repository on which to release.  Used only if you want to create the
       release on another repo'
     required: false
+  generate_release_notes:
+    description:
+      'Whether to automatically generate the name and body for this release.'
+    required: false
+    default: false
 outputs:
   id:
     description: 'The ID of the created Release'

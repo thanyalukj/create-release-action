@@ -36,6 +36,7 @@ async function run() {
         core.setFailed(error.message);
       }
     }
+    const generate_release_notes = core.getInput('generate_release_notes', { required: false });
 
     // Create a release
     // API Documentation: https://developer.github.com/v3/repos/releases/#create-a-release
@@ -49,6 +50,7 @@ async function run() {
       draft,
       prerelease,
       target_commitish: commitish,
+      generate_release_notes: generate_release_notes
     });
 
     // Get the ID, html_url, and upload URL for the created Release from the response
